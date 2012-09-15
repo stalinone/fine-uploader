@@ -31,17 +31,17 @@ public class UploadReceiver extends HttpServlet
             if (ServletFileUpload.isMultipartContent(req))
             {
                 doWriteTempFileForPostRequest(req);
-                resp.getWriter().print("{success: true}");
+                resp.getWriter().print("{\"success\": true}");
             }
             else
             {
                 writeToTempFile(req.getInputStream(), new File("uploads/" + UUID.randomUUID().toString()), expectedFileSize);
-                resp.getWriter().print("{success: true}");
+                resp.getWriter().print("{\"success\": true}");
             }
         } catch (Exception e)
         {
             e.printStackTrace();
-            resp.getWriter().print("{success: false}");
+            resp.getWriter().print("{\"success\": false}");
         }
     }
 
