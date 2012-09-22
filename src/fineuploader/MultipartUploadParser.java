@@ -16,9 +16,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class FileUploadParser
+public class MultipartUploadParser
 {
-	final Logger log = LoggerFactory.getLogger(FileUploadParser.class);
+	final Logger log = LoggerFactory.getLogger(MultipartUploadParser.class);
 
 	private Map<String, String> params = new HashMap<String, String>();
 
@@ -31,7 +31,7 @@ public class FileUploadParser
 	// FileCleanerCleanup uses a java.lang.ref.ReferenceQueue to delete the temp file when the FileItemsFactory marker object is GCed
 	private DiskFileItemFactory fileItemsFactory;
 
-	public FileUploadParser(HttpServletRequest request, File repository, ServletContext context) throws Exception
+	public MultipartUploadParser(HttpServletRequest request, File repository, ServletContext context) throws Exception
 	{
 		if (!repository.exists() && !repository.mkdirs())
 		{
