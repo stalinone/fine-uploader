@@ -2,7 +2,10 @@ $(document).ready(function() {
     var uploader = new qq.FileUploader({
         element: $('#basicUploadSuccessExample')[0],
         action: "/upload/receiver",
-        debug: true
+        debug: true,
+        onError: function(id, fileName, reason) {
+            console.log("id: " + id + ", fileName: " + fileName + ", reason: " + reason);
+        }
     });
 
 
@@ -11,7 +14,10 @@ $(document).ready(function() {
         element: $('#manualUploadModeExample')[0],
         action: "/upload/receiver",
         autoUpload: false,
-        uploadButtonText: "Select Files"
+        uploadButtonText: "Select Files",
+        onError: function(id, fileName, reason) {
+            console.log("id: " + id + ", fileName: " + fileName + ", reason: " + reason);
+        }
     });
 
     $('#triggerUpload').click(function() {
@@ -21,7 +27,10 @@ $(document).ready(function() {
 
     var uploader3 = new qq.FileUploader({
         element: $('#basicUploadFailureExample')[0],
-        action: "/upload/receiver"
+        action: "/upload/receiver",
+        onError: function(id, fileName, reason) {
+            console.log("id: " + id + ", fileName: " + fileName + ", reason: " + reason);
+        }
     });
 
 
@@ -31,13 +40,19 @@ $(document).ready(function() {
         multiple: false,
         allowedExtensions: ['jpeg', 'jpg', 'txt'],
         sizeLimit: 50000,
-        uploadButtonText: "Click Or Drop"
+        uploadButtonText: "Click Or Drop",
+        onError: function(id, fileName, reason) {
+            console.log("id: " + id + ", fileName: " + fileName + ", reason: " + reason);
+        }
     });
 
     uploader5 = new qq.FileUploaderBasic({
         multiple: false,
         autoUpload: false,
         action: "/upload/receiver",
-        button: $("#fubButton")[0]
+        button: $("#fubButton")[0],
+        onError: function(id, fileName, reason) {
+            console.log("id: " + id + ", fileName: " + fileName + ", reason: " + reason);
+        }
     });
 });
