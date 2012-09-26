@@ -5,6 +5,12 @@ $(document).ready(function() {
         debug: true,
         onError: function(id, fileName, reason) {
             console.log("id: " + id + ", fileName: " + fileName + ", reason: " + reason);
+        },
+        failedUploadTextDisplay: {
+            mode: 'custom',
+            maxChars: 4,
+            responseProperty: 'error',
+            enableTooltip: true
         }
     });
 
