@@ -59,6 +59,7 @@ $(document).ready(function() {
         button: $("#fubButton")[0],
         onError: function(id, fileName, reason) {
             console.log("id: " + id + ", fileName: " + fileName + ", reason: " + reason);
-        }
+        },
+        button: $('#fubUploadButton')[0]
     });
 });
