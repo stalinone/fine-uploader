@@ -242,7 +242,8 @@ qq.UploadDropZone = function (o) {
       isSafari = qq.safari();
     // dt.effectAllowed is none in Safari 5
     // dt.types.contains check is for firefox
-    effectTest = qq.ie10() ? true : dt.effectAllowed !== 'none';
+    // temporaririly fix: IE11 throws SCRIPT65535 error in this line
+    effectTest = (qq.ie10() || qq.ie11()) ? true : dt.effectAllowed !== 'none';
     return dt && effectTest && (dt.files || (!isSafari && dt.types.contains && dt.types.contains('Files')));
   }
 
@@ -258,7 +259,8 @@ qq.UploadDropZone = function (o) {
       if (!isValidFileDrag(e)) {
         return;
       }
-      var effect = qq.ie() ? null : e.dataTransfer.effectAllowed;
+      // temporarily fix: IE11 throws SCRIPT65535 error in the following line
+      var effect = (qq.ie() || qq.ie11()) ? null : e.dataTransfer.effectAllowed;
       if (effect === 'move' || effect === 'linkMove') {
         e.dataTransfer.dropEffect = 'move'; // for FF (only move allowed)
       } else {
